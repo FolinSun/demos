@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="zh-CN" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="zh-CN" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="zh-CN" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no" name="format-detection"/>
+    <title></title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="script/jQueryDialog.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0 none;
+            list-style: none;
+        }
+        .box{
+            padding: 50px;
+        }
+        .box1 span,
+        .box span{
+            font-size: 16px;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box-main">
+    <ul>
+        <li>列表-1</li>
+        <li>列表-2</li>
+        <li>列表-3</li>
+        <li>列表-4</li>
+        <li>列表-5</li>
+        <li>列表-6</li>
+        <li>列表-7</li>
+        <li>列表-8</li>
+        <li>列表-9</li>
+        <li>列表-10</li>
+    </ul>
+</div>
+
+<div class="box">
+    <span>点击我弹出</span>
+</div>
+
+<br>
+<div class="box1">
+    <span>boxMain</span>
+</div>
+
+<script>
+    var dialog2 = jqueryDialog({
+        title: 'box-main',
+        content: $(".box-main"),
+        fixed: true,
+        isModal: true,
+        width: 460,
+        height: 200,
+        buttons: [
+            {
+                id: "reset-ok",
+                value: "同意",
+                isCur: true,
+                callback: function () {
+                    this.content("你同意了");
+                    this.close();
+                    return false;
+                }
+            },
+            {
+                id: "no-cancel",
+                value: "不同意",
+                callback: function () {
+                    alert('你不同意')
+                }
+            },
+            {
+                id: "button-disabled",
+                value: "无效按钮",
+                disabled: true,
+                callback: function () {
+                    alert("1011");
+                }
+            }
+        ]
+    });
+    $(".box1 span").on("click",function () {
+        dialog2.show();
+    });
+
+    var dialog1 = jqueryDialog({
+        content: "这个层将在两秒钟之后关闭",
+//        resetCls: "reset-dialog",
+        isModalClose: true,
+        autoClose: 2000,
+        cancelDisplay: false,
+    }).show();
+    $(".box span").on("click",function () {
+        dialog1.show();
+    });
+</script>
+
+</body>
+</html>

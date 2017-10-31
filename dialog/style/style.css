@@ -1,0 +1,71 @@
+.dialog-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background: #000;
+}
+.dialog-box{
+    position: absolute;
+}
+.dialog-main{
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid #999;
+    background: #fff;
+}
+
+.dialog-header{
+    position: relative;
+}
+.dialog-title{
+    float: left;
+    width: 100%;
+    text-indent: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+}
+.dialog-close{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 8px;
+    font-size: 24px;
+}
+
+.dialog-container{
+    clear: both;
+}
+.dialog-content{
+    padding: 20px;
+}
+.dialog-footer{
+    padding: 0 10px 10px 10px;
+    text-align: right;
+}
+.dialog-footer [type="button"]{
+    padding: 6px 12px;
+    margin-left: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    background: #f5f5f5;
+}
+.dialog-footer .dialog-current{
+    color: #fff;
+    border-color: #1981db;
+    background: #1981db;
+}
+.dialog-footer [type="button"]:disabled{
+    border-color: #ccc;
+    background: #ccc;
+}
