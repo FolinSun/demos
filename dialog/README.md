@@ -15,34 +15,7 @@ var operatingLayer = jqueryDialog({
     fixed: true,
     isModal: true,
     width: 460,
-    height: 200,
-    buttons: [
-        {
-            id: "reset-ok",
-            value: "同意",
-            isCur: true,
-            callback: function () {
-                this.content("你同意了");
-                this.close();
-                return false;
-            }
-        },
-        {
-            id: "no-cancel",
-            value: "不同意",
-            callback: function () {
-                alert('你不同意')
-            }
-        },
-        {
-            id: "button-disabled",
-            value: "无效按钮",
-            disabled: true,
-            callback: function () {
-                alert("1011");
-            }
-        }
-    ]
+    height: 200
 });
 $(".operating-layer span").on("click",function () {
     operatingLayer.show();
