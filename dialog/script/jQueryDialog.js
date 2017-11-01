@@ -8,7 +8,7 @@
         // Node/CommonJS
         module.exports = factory;
     } else if (typeof define === 'function' && (define.amd || define.cmd)) {
-        // AMD. Register as an anonymous module.
+        // AMD或CMD
         define(function () {
             return factory;
         });

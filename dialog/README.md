@@ -1,8 +1,66 @@
 jQueryDialog 弹层组件。支持PC跟移动端  
 ===  
-此插件源部分自于[artDialog](http://aui.github.io/artDialog/) 
+jQuery弹出层组件，支持弹出常用的模态框及操作提示框等。支持amd或cmd规范，或直接引入。
+另此插件源部分自于[artDialog](http://aui.github.io/artDialog/) 
 
 ## 使用方法
+````javascript
+<script src="script/jQueryDialog.js"></script>
+````
+###### 操作层
+````javascript
+var operatingLayer = jqueryDialog({
+    title: 'title',
+    content: $(".operating-layer-box"),
+    fixed: true,
+    isModal: true,
+    width: 460,
+    height: 200,
+    buttons: [
+        {
+            id: "reset-ok",
+            value: "同意",
+            isCur: true,
+            callback: function () {
+                this.content("你同意了");
+                this.close();
+                return false;
+            }
+        },
+        {
+            id: "no-cancel",
+            value: "不同意",
+            callback: function () {
+                alert('你不同意')
+            }
+        },
+        {
+            id: "button-disabled",
+            value: "无效按钮",
+            disabled: true,
+            callback: function () {
+                alert("1011");
+            }
+        }
+    ]
+});
+$(".operating-layer span").on("click",function () {
+    operatingLayer.show();
+});
+````
+##### 提示层
+````javascript
+var tipsLayer = jqueryDialog({
+    content: "这个层将在两秒钟之后关闭",
+    autoClose: 2000,
+    cancelDisplay: false,
+});
+$(".tips-layer span").on("click",function () {
+    tipsLayer.show();
+});
+````
+
+
 
 ## 参数列表
 参数 | 参数类型 | 默认参数 | 参数说明
@@ -71,3 +129,9 @@ buttons: [
 `disabled` | `Boolean` | | 禁用当前按钮，可选参数 |
 `isCur` | `Boolean` | | 当前按钮是否高亮，可选参数 |
 `callback` | `Function` | | 当前按钮回调函数，必传参数，所有按钮回调函数都默认移除弹框，如果只想关闭弹框，请在函数最后使用`return false` | 
+
+
+## 待更新问题
+1.打开弹框之前或者之后是否需要事件？
+2.关闭弹框之前或者之前是否需要事件？
+3.弹框为自动关闭且没有按钮时，是否需要隐藏关闭按钮？

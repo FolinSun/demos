@@ -23,11 +23,13 @@
             border: 0 none;
             list-style: none;
         }
-        .box{
-            padding: 50px;
+        .operating-layer,
+        .tips-layer{
+            margin-left: 100px;
+            margin-top: 20px;
         }
-        .box1 span,
-        .box span{
+        .operating-layer span,
+        .tips-layer span{
             font-size: 16px;
             color: red;
             cursor: pointer;
@@ -36,7 +38,7 @@
 </head>
 <body>
 
-<div class="box-main">
+<div class="operating-layer-box">
     <ul>
         <li>列表-1</li>
         <li>列表-2</li>
@@ -50,20 +52,19 @@
         <li>列表-10</li>
     </ul>
 </div>
-
-<div class="box">
-    <span>点击我弹出</span>
-</div>
-
 <br>
-<div class="box1">
-    <span>boxMain</span>
+<div class="operating-layer">
+    <span>操作层</span>
 </div>
-
+<br>
+<br>
+<div class="tips-layer">
+    <span>提示层</span>
+</div>
 <script>
-    var dialog2 = jqueryDialog({
-        title: 'box-main',
-        content: $(".box-main"),
+    var operatingLayer = jqueryDialog({
+        title: 'title',
+        content: $(".operating-layer-box"),
         fixed: true,
         isModal: true,
         width: 460,
@@ -96,19 +97,17 @@
             }
         ]
     });
-    $(".box1 span").on("click",function () {
-        dialog2.show();
+    $(".operating-layer span").on("click",function () {
+        operatingLayer.show();
     });
 
-    var dialog1 = jqueryDialog({
+    var tipsLayer = jqueryDialog({
         content: "这个层将在两秒钟之后关闭",
-//        resetCls: "reset-dialog",
-        isModalClose: true,
         autoClose: 2000,
         cancelDisplay: false,
-    }).show();
-    $(".box span").on("click",function () {
-        dialog1.show();
+    });
+    $(".tips-layer span").on("click",function () {
+        tipsLayer.show();
     });
 </script>
 
