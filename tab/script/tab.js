@@ -1,11 +1,12 @@
 /**
- * Created by Folin on 2017-10-17.
+ * Created by Folin on 2017-11-02.
  */
 
 // Uses CommonJS, AMD or browser globals to create a jQuery plugin.
+
 (function (factory) {
-    if (typeof define === 'function' && (define.amd || define.cmd) && !jQuery) {
-        // AMD/CMD
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
         define(['jquery'], factory);
     } else if (typeof module === 'object' && module.exports) {
         // Node/CommonJS
@@ -35,7 +36,11 @@
      * @type {Object}
      */
     var defaults = {
-
+        child: "span",  //导航
+        content: ".tab-item", //内容
+        event: "click",  //触发事件
+        current: "current",  //选中时的class
+        activeIndex: 0,  //默认选中导航项的索引
     };
 
     /**
@@ -43,26 +48,42 @@
      * @type element {HTMLElement} dom
      * @type options {Object} 参数
      */
-    var picSlide = function(element, options) {
+    var tabs = function(element, options) {
         this.element = element;
         this.$element = $(element);
-        this.config = $.extend({}, defaults, options);
         this._defaults = defaults;
+        this.config = $.extend({}, defaults, options);
     };
 
-    picSlide.prototype = {
+    tabs.prototype = {
         /**
-         * 初始方法
+         * 初始化
          * */
         init: function () {
-            
+            var $children = $(this.config.child, this.$element);
+            var $item = $(this.config.content, this.$element);
+            $item.hide().eq(this.config.activeIndex).show();
+            $children.eq(this.config.activeIndex).addClass(this.config.current);
+            this.tab($children,$item);
         },
-
+        tab: function (children,dom) {
+            var self = this;
+            children.on(self.config.event,function () {
+                var $this = $(this);
+                var _index = $this.index();
+                $this.addClass(self.config.current).siblings().removeClass(self.config.current);
+                dom.eq(_index).show().siblings().hide();
+                return false;
+            });
+        }
     };
 
-    $.fn.jqueryPicSlide = function (options) {
+    /**
+     * 创建jquery插件
+     * */
+    $.fn.tabs = function (options) {
         return this.each(function () {
-            new picSlide(this, options).init();
+            new tabs(this, options).init();
         });
     };
 }));
