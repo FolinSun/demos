@@ -1,25 +1,267 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, uc-fitscreen=yes, user-scalable=0;" name="viewport" />
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, uc-fitscreen=yes, user-scalable=0;"
+          name="viewport"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta http-equiv="Cache-Control" content="no-cache"/>
     <title>少少少</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-  </head>
-  <body>
-      <div class="wrap">
-        <p>哈喽！夏风 若问 ruru  骚包大叔北川  听涛  苹果酱。。。</p>
-        <div class="Occupying"></div>
-      </div>
-      <footer>
-        <a href="javascritp:;">夏风酱</a>
-        <a href="javascritp:;">若问酱</a>
-        <a href="javascritp:;">ruru酱</a>
-      </footer>
-  </body>
+</head>
+<body>
+<div class="wrap">
+    <p>哈喽！夏风 若问 ruru 骚包大叔北川 听涛 苹果酱。。。</p>
+    <div class="Occupying"></div>
+</div>
+<footer>
+    <a href="javascritp:;">夏风酱</a>
+    <a href="javascritp:;">若问酱</a>
+    <a href="javascritp:;">ruru酱</a>
+</footer>
+
+
+<script>
+    const classCount = [
+        {
+            "classId": 33,
+            "value": "酒精饮料",
+            "total": 1334
+        },
+        {
+            "classId": 25,
+            "value": "服装鞋帽",
+            "total": 22
+        },
+        {
+            "classId": 24,
+            "value": "家用纺品",
+            "total": 21
+        },
+        {
+            "classId": 35,
+            "value": "广告商业",
+            "total": 19
+        },
+        {
+            "classId": 30,
+            "value": "食品佐料",
+            "total": 18
+        },
+        {
+            "classId": 32,
+            "value": "啤酒饮料",
+            "total": 16
+        },
+        {
+            "classId": 5,
+            "value": "药品制剂",
+            "total": 15
+        },
+        {
+            "classId": 29,
+            "value": "食品鱼肉",
+            "total": 13
+        },
+        {
+            "classId": 21,
+            "value": "厨具日用",
+            "total": 12
+        },
+        {
+            "classId": 43,
+            "value": "餐饮住宿",
+            "total": 12
+        }
+    ];
+    const classMe = [
+        {
+            "classId": 35,
+            "value": "广告商业",
+            "total": 1090
+        },
+        {
+            "classId": 25,
+            "value": "服装鞋帽",
+            "total": 114
+        },
+        {
+            "classId": 43,
+            "value": "餐饮住宿",
+            "total": 98
+        },
+        {
+            "classId": 21,
+            "value": "厨具日用",
+            "total": 55
+        },
+        {
+            "classId": 24,
+            "value": "家用纺品",
+            "total": 49
+        },
+        {
+            "classId": 30,
+            "value": "食品佐料",
+            "total": 40
+        },
+        {
+            "classId": 29,
+            "value": "食品鱼肉",
+            "total": 39
+        },
+        {
+            "classId": 32,
+            "value": "啤酒饮料",
+            "total": 37
+        },
+        {
+            "classId": 5,
+            "value": "药品制剂",
+            "total": 27
+        },
+        {
+            "classId": 33,
+            "value": "酒精饮料",
+            "total": 25
+        }
+    ];
+    const classMe1 = [
+        {
+            "classId": 35,
+            "value": "广告商业",
+            "total": 0
+        },
+        {
+            "classId": 25,
+            "value": "服装鞋帽",
+            "total": 0
+        },
+        {
+            "classId": 43,
+            "value": "餐饮住宿",
+            "total": 0
+        },
+        {
+            "classId": 21,
+            "value": "厨具日用",
+            "total": 0
+        },
+        {
+            "classId": 24,
+            "value": "家用纺品",
+            "total": 0
+        },
+        {
+            "classId": 30,
+            "value": "食品佐料",
+            "total": 0
+        },
+        {
+            "classId": 29,
+            "value": "食品鱼肉",
+            "total": 0
+        },
+        {
+            "classId": 32,
+            "value": "啤酒饮料",
+            "total": 0
+        },
+        {
+            "classId": 5,
+            "value": "药品制剂",
+            "total": 0
+        },
+        {
+            "classId": 33,
+            "value": "酒精饮料",
+            "total": 0
+        }
+    ];
+    const classMe2 = [
+        {
+            "classId": 35,
+            "value": "广告商业",
+            "total": 1090
+        },
+        {
+            "classId": 25,
+            "value": "服装鞋帽",
+            "total": 114
+        },
+        {
+            "classId": 43,
+            "value": "餐饮住宿",
+            "total": 0
+        },
+        {
+            "classId": 21,
+            "value": "厨具日用",
+            "total": 55
+        },
+        {
+            "classId": 24,
+            "value": "家用纺品",
+            "total": 49
+        },
+        {
+            "classId": 30,
+            "value": "食品佐料",
+            "total": 40
+        },
+        {
+            "classId": 29,
+            "value": "食品鱼肉",
+            "total": 0
+        },
+        {
+            "classId": 32,
+            "value": "啤酒饮料",
+            "total": 37
+        },
+        {
+            "classId": 5,
+            "value": "药品制剂",
+            "total": 0
+        },
+        {
+            "classId": 33,
+            "value": "酒精饮料",
+            "total": 0
+        }
+    ];
+    let getChartData = [];
+    let bbb = classMe2;
+    const getClassThe = bbb.filter(v => {
+        return v.total <= 0
+    });
+    const getClassTheSize = getClassThe.length;
+    if(getClassTheSize > 0 && getClassTheSize !== bbb.length){
+        console.log('取得数据');
+        getChartData = classCount.filter((v,index) => {
+            return getClassThe.filter((k,i) => {
+                return k.classId === v.classId;
+            })[0]
+        })
+    }else{
+        getChartData = getClassTheSize > 0 ? true : false;
+    }
+    console.log(JSON.stringify(getClassThe));
+    console.log(getChartData);
+
+    // const bbb = classMe1.filter(v => {
+    //     return v.total <= 0
+    // });
+    // const ccc = classMe2.filter(v => {
+    //     return v.total <= 0
+    // });
+
+
+
+</script>
+
+</body>
 </html>
