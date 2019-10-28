@@ -33,7 +33,7 @@
         backdropOpacity: .7,   //遮罩层透明度 .7 或者70
         zIndex: 1000,  //层级
         isModalClose: false,  //点击空白处是否关闭，默认false
-        autoClose: false,  //是否自动关闭，默认false
+        autoClose: false,  //是否自动关闭，默认false，可以为true || number
         okValue: "ok",  // 确定按钮文本
         ok: null,   // 确定按钮回调函数
         cancelValue: "cancel",  // 取消按钮文本
@@ -106,24 +106,30 @@
          * */
         if(!$.isArray(that.config.buttons)) that.config.buttons = [];
 
-        //取消按钮
-        if(that.config.cancel){
-            that.config.buttons.push({
-                id: "cancel", //id
-                value: that.config.cancelValue,  //文本
-                callback: that.config.cancel  //回调方法
-            });
-        }
+        // 如果是 tips 层，就清空按钮组
+        if (!(that.config.autoClose || typeof that.config.autoClose === "number")) {
+            //取消按钮
+            if(that.config.cancel){
+                that.config.buttons.push({
+                    id: "cancel", //id
+                    value: that.config.cancelValue,  //文本
+                    callback: that.config.cancel  //回调方法
+                });
+            }
 
-        //确定按钮
-        if(that.config.ok){
-            that.config.buttons.push({
-                id: 'ok',  //id
-                value: that.config.okValue,  //文本
-                callback: that.config.ok,  //回调方法
-                isCur: true  //是否高亮
-            });
+            //确定按钮
+            if(that.config.ok){
+                that.config.buttons.push({
+                    id: 'ok',  //id
+                    value: that.config.okValue,  //文本
+                    callback: that.config.ok,  //回调方法
+                    isCur: true  //是否高亮
+                });
+            }
+        } else {
+            that.config.buttons = []
         }
+        
 
         //关闭按钮
         that._$("close").css({
@@ -313,13 +319,15 @@
 
             //遍历按钮数组
             $.each(args,function (i, k) {
-                that.callbacks[k.id] = k.callback; //回调方法
-                html += innerHtml.buttosTemplate(k.id, k.value, k.disabled, k.isCur);
+                var id = k.id = k.id || k.value
+                that.callbacks[id] = k.callback; //回调方法
+                
+                html += innerHtml.buttosTemplate(id, k.value, k.disabled, k.isCur);
                 //按钮点击事件
-                that._$("footer").on(that.config.event, "[id="+ k.id +"]", function (event) {
+                that._$("footer").on(that.config.event, "[id="+ id +"]", function (event) {
                     event.preventDefault();
                     if(!this.getAttribute("disabled")){
-                        that._trigger(k.id); //触发对应事件
+                        that._trigger(id); //触发对应事件
                     }
                 });
             });
@@ -337,10 +345,10 @@
             that._backdrop.show();
             $(win).on("resize", $.proxy(that.resize, that));
             //自动关闭弹出层
-            if(that.config.autoClose && typeof that.config.autoClose === "number"){
+            if(that.config.autoClose || typeof that.config.autoClose === "number"){
                 that.timer = setTimeout(function () {
                     that._trigger("cancel");
-                },that.config.autoClose);
+                },that.config.autoClose ? 2000 : that.config.autoClose);
             }
             return that;
         },
