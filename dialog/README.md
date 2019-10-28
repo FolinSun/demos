@@ -48,7 +48,7 @@ $(".tips-layer span").on("click",function () {
 `backdropOpacity` | `Number` | .7 | 遮罩层透明度，可传值 `.7` 或者 `70` |
 `zIndex` | `Number` | 1000 | 弹框层级 |
 `isModalClose` | `Boolean` | false | 点击空白处是否关闭 |
-`autoClose` | `Boolean` / `Number` | false | 是否自动关闭，默认false，可以为true || number |
+`autoClose` | `Boolean` / `Number` | false | 是否自动关闭，默认false，可以为true 或者 number |
 `okValue` | `String` | ok | 确定按钮文本 |
 `ok` | `Function` | null | 确定按钮回调函数，按钮回调函数都默认移除弹框，如果只想关闭弹框，请在函数最后使用`return false` |
 `cancelValue` | `String` | cancel | 取消按钮文本 |
