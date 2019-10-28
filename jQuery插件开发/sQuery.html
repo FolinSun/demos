@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery插件开发</title>
+</head>
+<body>
+
+<ul>
+    <li><a class="reset-color" href="javascript:;">sfl</a></li>
+    <li><a class="reset-color" href="javascript:;">ktv</a></li>
+    <li><a href="javascript:;">sw</a></li>
+</ul>
+<p>这是p标签不是a标签，我不会受影响</p>
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="sQuery.js"></script>
+<script>
+    $('.reset-color').myPlugin({
+        'color': 'red',
+        'fontSize': '20px',
+        mouseenterFun: function () {
+            console.log('mouseenter');
+        },
+        mouseoutFun: function () {
+            console.log('mouseout');
+        }
+    });
+</script>
+</body>
+</html>
