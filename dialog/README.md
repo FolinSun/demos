@@ -4,10 +4,13 @@ jQuery弹出层组件，支持弹出常用的模态框及操作提示框等。�
 另此插件源部分自于[artDialog](http://aui.github.io/artDialog/) 
 
 ## 使用方法
+
 ````javascript
 <script src="script/jQueryDialog.js"></script>
 ````
+
 ###### 操作层
+
 ````javascript
 var operatingLayer = jqueryDialog({
     title: 'title',
@@ -21,7 +24,9 @@ $(".operating-layer span").on("click",function () {
     operatingLayer.show();
 });
 ````
+
 ##### 提示层
+
 ````javascript
 var tipsLayer = jqueryDialog({
     content: "这个层将在两秒钟之后关闭",
