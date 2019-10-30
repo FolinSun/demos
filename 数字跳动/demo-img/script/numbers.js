@@ -64,8 +64,8 @@
 
     var defaults = {
         endVal: null, //最终显示数值
-        time: 350,  //滚动时间
-        speed: 7,  //步数
+        time: 100,  //滚动时间
+        speed: 10,  //步数
         spacing: 40 //间距
     };
 

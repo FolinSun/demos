@@ -2,7 +2,7 @@
  * Created by folin on 2017/9/19.
  */
 
-;(function ($,window,document,undefined) {
+; (function ($, window, document, undefined) {
 
     function Numbers(element, options) {
         this.element = element;
@@ -22,11 +22,11 @@
          * @param decimals：保留几位小数
          * */
         formatMoney: function (number, decimals) {
-            decimals = (decimals != "undefined" && decimals <= 20) ? decimals : 2;
+            decimals = (decimals !== "undefined" && decimals <= 20) ? decimals : 2;
             number = parseFloat(number.toString().replace(/[^\d\.-]/g, "")).toFixed(decimals).toString();
-            var numArry = number.split("."), numBefore = numArry[0].split("").reverse(),count = "";
-            for(var i = 0,len = numBefore.length; i < len; i++){
-                count += numBefore[i] + ( ( (i+1)%3 == 0 && (i+1) != len ) ? "," : "" );
+            var numArry = number.split("."), numBefore = numArry[0].split("").reverse(), count = "";
+            for (var i = 0, len = numBefore.length; i < len; i++) {
+                count += numBefore[i] + (((i + 1) % 3 == 0 && (i + 1) != len) ? "," : "");
             }
             return count.split("").reverse().join("") + "." + numArry[1];
         },
@@ -38,24 +38,27 @@
             //var res = new RegExp("^([+-]?)\\d*\\.?\\d+$");
             var res = /^([+-]?)\d*\.?\d+$/;
             self.config.endVal = self.element.getAttribute("data-value");
-            if(dataType == self.config.dataType && res.test(self.config.endVal)){
-                self.config.startVal = self.config.endVal / self.config.speed; //数字变化开始值
+            // 只有数值类型才能计算滚动
+            if (dataType === self.config.dataType && res.test(self.config.endVal)) {
+                self.config.startVal = self.config.endVal / self.config.speed; // 数字变化开始值
                 self.count = 0;
                 self.lastNumber;
                 self.time = setInterval(function () {
                     self.count = self.count + self.config.startVal;
-                    if(parseInt(self.count) >= parseInt(self.config.endVal)){
+                    if (parseInt(self.count) >= parseInt(self.config.endVal)) {
                         self.count = parseFloat(self.config.endVal);
                         clearInterval(self.time);
                     }
                     self.lastNumber = self.count.toFixed(0);
-                    if(dataOption != "int") self.lastNumber = self.count.toFixed(self.config.decimal);
-                    if(dataOption == "money") self.lastNumber = self.formatMoney(self.count,self.config.decimal);
-                    self.resetHtml(self.lastNumber,dataTxt);
-                },self.config.time);
+                    // 如果不是整型，只保留小数位，默认是两位
+                    if (dataOption !== "int") self.lastNumber = self.count.toFixed(self.config.decimal);
+                    // 如果是 money 类型的话，需要格式化千分位处理
+                    if (dataOption === "money") self.lastNumber = self.formatMoney(self.count, self.config.decimal);
+                    self.resetHtml(self.lastNumber, dataTxt);
+                }, self.config.time);
             }
         },
-        resetHtml: function (number,txt) {
+        resetHtml: function (number, txt) {
             txt = txt != null ? txt : '';
             this.element.innerHTML = number + txt;
         }
@@ -76,4 +79,4 @@
         });
     };
 
-})(jQuery,window,document);
+})(jQuery, window, document);
